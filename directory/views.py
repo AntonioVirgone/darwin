@@ -1,25 +1,28 @@
 import json
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from service.DirectoryService import DirectoryService
 from service.model.DirectoryViewModel import DirectoryViewModel, DirectoryViewModelEncoder
 
 
 def create(request):
-    dirName = request.GET.get("dirName")
-    code = DirectoryService.create(dirName)
+    if request.method == "POST":
+        dirName = request.POST.get("dirName")
+        code = DirectoryService.create(dirName)
 
-    if code:
-        json_str = json.dumps(DirectoryViewModel(directoryCode=code, directoryName=dirName), cls=DirectoryViewModelEncoder)
+        if code:
+            json_str = json.dumps(DirectoryViewModel(directoryCode=code, directoryName=dirName),
+                                  cls=DirectoryViewModelEncoder)
 
-        print(json_str)
-        return HttpResponse(
-            json_str,
-            content_type="application/json")
+            print(json_str)
+            return redirect('findAll')
+
+        else:
+            return HttpResponse("Creazione cartella %s fallita" % dirName)
     else:
-        return HttpResponse("Creazione cartella %s fallita" % dirName)
+        return render(request, 'manager/directory_create.html')
 
 
 def findAll(request):

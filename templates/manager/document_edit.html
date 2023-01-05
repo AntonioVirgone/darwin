@@ -1,0 +1,16 @@
+{% extends '../common/common.html' %}
+{% block content %}
+    <main class="content container">
+        <div class="row">
+            <div class="col">
+                <h2>New post</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="button is-success is-fullwidth is-medium mt-5" type="submit">Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}

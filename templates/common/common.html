@@ -29,97 +29,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'post_new' %}">Create document</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'create' %}">Create directory</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'findAll' %}">All files</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Transit With Filter
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="">Transit without filter</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li class="nav-item">
-                            <a class="dropdown-item" href="">Transit with paymentId 0</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="dropdown-item" href="">Transit Closed</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="dropdown-item" href="">Transit Failed</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="dropdown-item" href="">Transit Pending</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Retry Transit</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Data Transit
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="">All Transit</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="">TPay Transit</a></li>
-                        <li><a class="dropdown-item" href="">TPay X Transit</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Create
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="" style="pointer-events: none">Create directory</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="" style="pointer-events: none">Create document</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Transit filtered by shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Get Transit Payload</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Close Multi Transit</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Transit
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a class="dropdown-item" href="">Transit filtered
-                                TPAY</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="">Transit filtered
-                                TPAYX</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="">Transit ND filtered
-                                TPAY</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="">Transit ND filtered
-                                TPAYX</a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>

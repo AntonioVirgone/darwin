@@ -1,0 +1,15 @@
+{% extends '../common/common.html' %}
+
+{% block content %}
+    <article class="post">
+        <aside class="actions">
+        </aside>
+        {% if post.published_date %}
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+        {% endif %}
+        <h2>{{ post.projectName }}</h2>
+        <p>{{ post.directoryName|linebreaksbr }}</p>
+    </article>
+{% endblock %}

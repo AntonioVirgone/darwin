@@ -1,0 +1,16 @@
+{% extends '../common/common.html' %}
+{% block content %}
+    <main class="content container">
+        <div class="row">
+            <div class="col">
+                <h2>Create new directory</h2>
+                <form method="post" action="{% url 'create' %}">
+                    {% csrf_token %}
+                    <input name="dirName" type="text">
+                    <button class="button is-success is-fullwidth is-medium mt-5" type="submit">Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}
