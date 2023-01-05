@@ -1,10 +1,9 @@
 import uuid
 
+from django.core import serializers
+
 from document.models import Document
 from service import CreateDocumentService
-from service.model.DataDocument import DataDocument
-
-from django.core import serializers
 
 
 def jsonSerializer(articles):
@@ -14,19 +13,9 @@ def jsonSerializer(articles):
 class DocumentService:
 
     @staticmethod
-    def create(data):
-        dataDocument = DataDocument.fromJson(data)
-
-        document = Document(code=str(uuid.uuid4()),
-                            projectName=dataDocument.fileName,
-                            serviceName=dataDocument.serviceName,
-                            directoryName=dataDocument.directoryName,
-                            serviceVersion=dataDocument.serviceVersion,
-                            gkeServiceName=dataDocument.gkeServiceName,
-                            fileName=dataDocument.fileName)
+    def create(document):
         document.save()
-
-        CreateDocumentService.createDocument(dataDocument)
+        CreateDocumentService.createDocument(document)
 
     @staticmethod
     def findByCode(documentCode):

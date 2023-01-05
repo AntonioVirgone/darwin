@@ -1,6 +1,5 @@
 import json
 
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from service.DirectoryService import DirectoryService
@@ -15,12 +14,11 @@ def create(request):
         if code:
             json_str = json.dumps(DirectoryViewModel(directoryCode=code, directoryName=dirName),
                                   cls=DirectoryViewModelEncoder)
-
             print(json_str)
-            return redirect('findAll')
-
         else:
-            return HttpResponse("Creazione cartella %s fallita" % dirName)
+            print("Creazione cartella %s fallita" % dirName)
+
+        return redirect('findAll')
     else:
         return render(request, 'manager/directory_create.html')
 
@@ -31,11 +29,12 @@ def findAll(request):
     list = []
 
     for directory in directoryList:
-        dir = dict()
-        dir["name"] = directory
-        dir["files"] = DirectoryService.getFileList(directory)
+        if directory != ".DS_Store":
+            dir = dict()
+            dir["name"] = directory
+            dir["files"] = DirectoryService.getFileList(directory)
 
-        list.append(dir)
+            list.append(dir)
 
     print(list)
 

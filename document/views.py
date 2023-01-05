@@ -1,10 +1,38 @@
+import json
+
 from django.shortcuts import render, redirect
 
 from document.forms import PostForm
+from service.DocumentService import DocumentService
 from .models import Document
 
 
-# Create your views here.
+def create(request):
+    if request.method == "POST":
+        projectName = request.POST.get("projectName")
+        directoryName = request.POST.get("directoryName")
+        fileName = request.POST.get("fileName")
+        serviceName = request.POST.get("serviceName")
+        serviceVersion = request.POST.get("serviceVersion")
+        gkeServiceName = request.POST.get("gkeServiceName")
+        commandList = [request.POST.get("command1"), request.POST.get("command2"), request.POST.get("command3")]
+
+        document = Document(projectName=projectName,
+                            directoryName=directoryName,
+                            fileName=fileName,
+                            serviceName=serviceName,
+                            serviceVersion=serviceVersion,
+                            gkeServiceName=gkeServiceName,
+                            commandList=json.dumps(commandList))
+        print(document)
+
+        DocumentService.create(document)
+
+        return redirect('findAll')
+    else:
+        return render(request, 'manager/document_create.html')
+
+
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -28,4 +56,3 @@ def post_detail(request, pk):
         print(doc)
 
     return render(request, 'manager/document_detail.html')
-

@@ -1,0 +1,77 @@
+{% extends '../common/common.html' %}
+{% block content %}
+    <main class="content container">
+        <div class="row">
+            <div class="col">
+                <h2>Create new document</h2>
+                <form method="post" action="{% url 'post_new' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Project name</label>
+                        <input name="projectName" type="text" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Project name">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Directory name</label>
+                        <input name="directoryName" type="text" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Directory name">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">File name</label>
+                        <input name="fileName" type="text" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="File name">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Service name</label>
+                        <input name="serviceName" type="text" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Service name">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Service version</label>
+                        <input name="serviceVersion" type="text" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Service version">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">GKE Service name</label>
+                        <input name="gkeServiceName" type="text" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="GKE Service name">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="kubectl apply -f configmap-p.yml" id="command1" name="command1">
+                        <label class="form-check-label" for="command1">
+                            kubectl apply -f configmap-p.yml
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="kubectl apply -f service-p.yml" id="command2" name="command2">
+                        <label class="form-check-label" for="command2">
+                            kubectl apply -f service-p.yml
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="kubectl apply -f deployment-p.yml" id="command3" name="command3">
+                        <label class="form-check-label" for="command3">
+                            kubectl apply -f deployment-p.yml
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}

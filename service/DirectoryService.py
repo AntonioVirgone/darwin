@@ -15,16 +15,10 @@ class DirectoryService:
 
     @staticmethod
     def getFileList(dirName):
-        # files = []
         path = Constant.PARENT_DIR + "/" + dirName
         print(path)
 
         return os.listdir(path)
-        # for entry in entries:
-        #     print(entry)
-        #     files.__add__(str(entry))
-        #
-        # return files
 
     @staticmethod
     def create(dirName):

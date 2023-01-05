@@ -1,3 +1,5 @@
+import json
+
 from docx import Document
 from docx.shared import Pt
 
@@ -80,8 +82,14 @@ def createDocument(dataDocument):
     # P3
     createParagraphHeader(document, 'Eseguire i seguenti comandi rispettando l’ordine:', 'List Number 2')
 
-    for command in dataDocument.commandList:
-        createParagraphBody(document, command, 'List Continue 2', True, Constant.FONT_TIMES_NEW_ROMAN)
+    commandList = json.loads(dataDocument.commandList)
+    commandNumber = 1
+
+    for command in commandList:
+        if command is not None and command != '' and command != 'None':
+            createParagraphBody(document, str(commandNumber) + ")" + str(command), 'List Continue 2', True,
+                                Constant.FONT_TIMES_NEW_ROMAN)
+            commandNumber = commandNumber + 1
     document.add_paragraph()
 
-    document.save(Constant.PARENT_DIR + "/" + dataDocument.directoryName + "/" + dataDocument.fileName)
+    document.save(Constant.PARENT_DIR + "/" + dataDocument.directoryName + "/" + dataDocument.fileName + ".docx")

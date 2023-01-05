@@ -7,7 +7,7 @@ FONT_ARIAL: str = "Arial"
 FONT_TIMES_NEW_ROMAN: str = "Times New Roman"
 
 # System
-PARENT_DIR = "../darwin/service/document"
+PARENT_DIR = "../darwin/deploy_document"
 
 # Content
 GOOGLE_CLOUD_NAME: str = "tlp-public-api-uservices-prod"
