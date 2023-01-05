@@ -12,3 +12,10 @@ PARENT_DIR = "../darwin/deploy_document"
 # Content
 GOOGLE_CLOUD_NAME: str = "tlp-public-api-uservices-prod"
 CLUSTER_NAME: str = "prod-public-api-uservices-gke"
+
+# Command list
+COMMAND_LIST = [
+    "kubectl apply -f configmap-p.yml",
+    "kubectl apply -f service-p.yml",
+    "kubectl apply -f deployment-p.yml"
+]

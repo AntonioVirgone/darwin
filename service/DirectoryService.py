@@ -8,10 +8,33 @@ from directory.models import Directory
 from service import Constant
 
 
+def mapSort(map, reverse):
+    def get_name(entity):
+        return entity.get('name')
+
+    # sort by name (Ascending order)
+    map.sort(key=get_name, reverse=reverse)
+    print(map, end='\n\n')
+    return map
+
+
 class DirectoryService:
     @staticmethod
     def getDirectoryList():
-        return os.listdir(path=Constant.PARENT_DIR)
+        directoryList = os.listdir(path=Constant.PARENT_DIR)
+
+        resultList = []
+
+        for directory in directoryList:
+            if directory != ".DS_Store":
+                directoryMap = dict()
+                directoryMap["name"] = directory
+                directoryMap["files"] = DirectoryService.getFileList(directory)
+
+                resultList.append(directoryMap)
+
+        return mapSort(resultList, True)
+
 
     @staticmethod
     def getFileList(dirName):

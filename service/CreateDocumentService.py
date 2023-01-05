@@ -87,7 +87,7 @@ def createDocument(dataDocument):
 
     for command in commandList:
         if command is not None and command != '' and command != 'None':
-            createParagraphBody(document, str(commandNumber) + ")" + str(command), 'List Continue 2', True,
+            createParagraphBody(document, str(commandNumber) + ") " + str(command), 'List Continue 2', True,
                                 Constant.FONT_TIMES_NEW_ROMAN)
             commandNumber = commandNumber + 1
     document.add_paragraph()

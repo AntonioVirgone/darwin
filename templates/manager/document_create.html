@@ -6,17 +6,23 @@
                 <h2>Create new document</h2>
                 <form method="post" action="{% url 'post_new' %}">
                     {% csrf_token %}
+
+                    <div class="form-group col-md-4">
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Directory</label>
+                        <select class="custom-select d-block w-100" name="directoryName" required="required">
+                            <option value="" selected>Choose...</option>
+                            {% for directory in directoryList %}
+                                <option value="{{ directory.name }}">{{ directory.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <hr class="mb-4">
+
                     <div class="form-group">
                         <label for="exampleInputEmail1">Project name</label>
                         <input name="projectName" type="text" class="form-control" id="exampleInputEmail1"
                                aria-describedby="emailHelp" placeholder="Project name">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Directory name</label>
-                        <input name="directoryName" type="text" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Directory name">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small>
                     </div>
@@ -49,24 +55,20 @@
                             else.</small>
                     </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="kubectl apply -f configmap-p.yml" id="command1" name="command1">
-                        <label class="form-check-label" for="command1">
-                            kubectl apply -f configmap-p.yml
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="kubectl apply -f service-p.yml" id="command2" name="command2">
-                        <label class="form-check-label" for="command2">
-                            kubectl apply -f service-p.yml
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="kubectl apply -f deployment-p.yml" id="command3" name="command3">
-                        <label class="form-check-label" for="command3">
-                            kubectl apply -f deployment-p.yml
-                        </label>
-                    </div>
+                    <hr class="mb-4">
+
+                    {% for command in commandList %}
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"
+                                   class="custom-control-input"
+                                   id="command{{ forloop.counter }}"
+                                   name="command{{ forloop.counter }}"
+                                   value="{{ command }}">
+                            <label class="custom-control-label" for="command{{ forloop.counter }}">{{ command }}</label>
+                        </div>
+                    {% endfor %}
+
+                    <hr class="mb-4">
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                     </button>

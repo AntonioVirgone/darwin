@@ -25,17 +25,9 @@ def create(request):
 
 def findAll(request):
     directoryList = DirectoryService.getDirectoryList()
-
-    list = []
-
-    for directory in directoryList:
-        if directory != ".DS_Store":
-            dir = dict()
-            dir["name"] = directory
-            dir["files"] = DirectoryService.getFileList(directory)
-
-            list.append(dir)
-
-    print(list)
-
-    return render(request, 'manager/directory.html', {'directoryList': list, 'countDirectories': len(directoryList)})
+    return render(request,
+                  'manager/directory.html',
+                  {
+                      'directoryList': directoryList,
+                      'countDirectories': len(directoryList)
+                  })

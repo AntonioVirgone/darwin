@@ -6,9 +6,14 @@
                 <h2>Create new directory</h2>
                 <form method="post" action="{% url 'create' %}">
                     {% csrf_token %}
-                    <input name="dirName" type="text">
-                    <button class="button is-success is-fullwidth is-medium mt-5" type="submit">Save
-                    </button>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Directory name</label>
+                        <input name="dirName" type="text" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Directory name">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>

@@ -3,6 +3,8 @@ import json
 from django.shortcuts import render, redirect
 
 from document.forms import PostForm
+from service.Constant import COMMAND_LIST
+from service.DirectoryService import DirectoryService
 from service.DocumentService import DocumentService
 from .models import Document
 
@@ -30,7 +32,13 @@ def create(request):
 
         return redirect('findAll')
     else:
-        return render(request, 'manager/document_create.html')
+        directoryList = DirectoryService.getDirectoryList()
+        return render(request,
+                      'manager/document_create.html',
+                      {
+                          'directoryList': directoryList,
+                          'commandList': COMMAND_LIST
+                      })
 
 
 def post_new(request):
