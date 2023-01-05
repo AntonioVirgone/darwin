@@ -1,0 +1,21 @@
+{% block content %}
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+    <tr>
+        <th scope="col"><h5 class="card-title">Name</h5></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for directory in directoryList %}
+    <tr>
+        <th scope="col">
+            <p class="date-back" style="font-size: 13px">{{ directory.name }}</p>
+            <div style="padding: 0 20px;">
+                {% include 'manager/directory_row.html' with files=directory.files %}
+            </div>
+        </th>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

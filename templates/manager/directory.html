@@ -1,0 +1,10 @@
+{% extends '../common/common.html' %}
+{% block content %}
+    <div class="container" style="max-width:1860px">
+        <div class="container my-5 text-center" style="max-width:580px">
+            <h1>Deploy Directories List ({{ countDirectories }})</h1>
+        </div>
+
+        {% include 'manager/directory_table.html' %}
+    </div>
+{% endblock %}
