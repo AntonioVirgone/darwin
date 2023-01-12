@@ -1,0 +1,84 @@
+{% extends '../../common/common.html' %}
+{% block content %}
+    <div class="container" style="max-width:1860px">
+        <div class="container my-5 text-center" style="max-width:720px">
+            <h1>Crea un nuovo documento per il rilascio</h1>
+        </div>
+        <main class="content container">
+            <div class="row">
+                <div class="col">
+                    <form method="post" action="{% url 'post_new' %}">
+                        {% csrf_token %}
+
+                        <div class="form-group col-md-4" style="padding: 0; margin-bottom: 30px;">
+                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Scegli una directory in cui salvare il file</label>
+                            <select class="custom-select d-block w-100" name="directoryName" required="required">
+                                <option value="" selected>Choose...</option>
+                                {% for directory in directoryList %}
+                                    <option value="{{ directory.name }}">{{ directory.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Project name</label>
+                            <input name="projectName" type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="Project name">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">File name</label>
+                            <input name="fileName" type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="File name">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Path dosker image</label>
+                            <input name="serviceName" type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="skipass-order-api">
+                            <small id="emailHelp" class="form-text text-muted">Il nome dell'immagine docker del
+                                servizio</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Service version</label>
+                            <input name="serviceVersion" type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="Service version">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">GKE Service name</label>
+                            <input name="gkeServiceName" type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="GKE Service name">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        {% for command in commandList %}
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox"
+                                       class="custom-control-input"
+                                       id="command{{ forloop.counter }}"
+                                       name="command{{ forloop.counter }}"
+                                       value="{{ command }}">
+                                <label class="custom-control-label"
+                                       for="command{{ forloop.counter }}">{{ command }}</label>
+                            </div>
+                        {% endfor %}
+
+                        <hr class="mb-4">
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

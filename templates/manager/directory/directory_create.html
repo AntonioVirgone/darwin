@@ -1,0 +1,25 @@
+{% extends '../../common/common.html' %}
+{% block content %}
+    <div class="container" style="max-width:1860px">
+        <div class="container my-5 text-center" style="max-width:860px">
+            <h1>Crea una nuova directory dove salvare i file</h1>
+        </div>
+        <main class="content container">
+            <div class="row">
+                <div class="col">
+                    <form method="post" action="{% url 'create' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Directory name</label>
+                            <input name="dirName" type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="Directory name">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">SAVE</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

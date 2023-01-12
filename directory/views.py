@@ -20,13 +20,13 @@ def create(request):
 
         return redirect('findAll')
     else:
-        return render(request, 'manager/directory_create.html')
+        return render(request, 'manager/directory/directory_create.html')
 
 
 def findAll(request):
     directoryList = DirectoryService.getDirectoryList()
     return render(request,
-                  'manager/directory.html',
+                  'manager/directory/directory.html',
                   {
                       'directoryList': directoryList,
                       'countDirectories': len(directoryList)

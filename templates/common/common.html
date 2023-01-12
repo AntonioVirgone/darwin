@@ -28,6 +28,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Project
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="{% url 'project_new' %}">Add project</a></li>
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="{% url 'projects' %}">Project list</a>
+                        </li>
+                    </div>
+                </div>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'post_new' %}">Create document</a>
                 </li>

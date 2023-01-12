@@ -26,7 +26,6 @@ def create(request):
                             serviceVersion=serviceVersion,
                             gkeServiceName=gkeServiceName,
                             commandList=json.dumps(commandList))
-        print(document)
 
         DocumentService.create(document)
 
@@ -34,7 +33,7 @@ def create(request):
     else:
         directoryList = DirectoryService.getDirectoryList()
         return render(request,
-                      'manager/document_create.html',
+                      'manager/document/document_create.html',
                       {
                           'directoryList': directoryList,
                           'commandList': COMMAND_LIST
@@ -45,14 +44,13 @@ def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            print(str(form))
             post = form.save(commit=False)
             post.author = request.user
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'manager/document_edit.html', {'form': form})
+    return render(request, 'manager/document/document_edit.html', {'form': form})
 
 
 def post_detail(request, pk):
@@ -61,6 +59,5 @@ def post_detail(request, pk):
 
     if Document.objects.filter(pk=pk):
         doc = Document.objects.get(pk=pk)
-        print(doc)
 
-    return render(request, 'manager/document_detail.html')
+    return render(request, 'manager/document/document_detail.html')

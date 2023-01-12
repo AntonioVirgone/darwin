@@ -14,7 +14,6 @@ def mapSort(map, reverse):
 
     # sort by name (Ascending order)
     map.sort(key=get_name, reverse=reverse)
-    print(map, end='\n\n')
     return map
 
 
@@ -39,7 +38,6 @@ class DirectoryService:
     @staticmethod
     def getFileList(dirName):
         path = Constant.PARENT_DIR + "/" + dirName
-        print(path)
 
         return os.listdir(path)
 
