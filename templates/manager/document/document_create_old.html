@@ -11,8 +11,7 @@
                         {% csrf_token %}
 
                         <div class="form-group col-md-4" style="padding: 0; margin-bottom: 30px;">
-                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Scegli una directory in cui
-                                salvare il file</label>
+                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Scegli una directory in cui salvare il file</label>
                             <select class="custom-select d-block w-100" name="directoryName" required="required">
                                 <option value="" selected>Choose...</option>
                                 {% for directory in directoryList %}
@@ -23,20 +22,13 @@
 
                         <hr class="mb-4">
 
-                        <div class="form-group col-md-4" style="padding: 0; margin-bottom: 30px;">
-                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Scegli il servizio da
-                                rilasciare</label>
-                            <select class="custom-select d-block w-100" name="projectName" required="required">
-                                <option value="" selected>Choose...</option>
-                                {% for project in projectList %}
-                                    <option value="{{ project.projectName }}">{{ project.projectName }}</option>
-                                {% endfor %}
-                            </select>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Project name</label>
+                            <input name="projectName" type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="Project name">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
                         </div>
-
-                        <hr class="mb-4">
-
-                        <!-- todo: togliere il campo dalla form e far calcolare al servizio quale è il nome del file -->
                         <div class="form-group">
                             <label for="exampleInputEmail1">File name</label>
                             <input name="fileName" type="text" class="form-control" id="exampleInputEmail1"
@@ -44,11 +36,24 @@
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                                 else.</small>
                         </div>
-
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Path dosker image</label>
+                            <input name="serviceName" type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="skipass-order-api">
+                            <small id="emailHelp" class="form-text text-muted">Il nome dell'immagine docker del
+                                servizio</small>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Service version</label>
                             <input name="serviceVersion" type="text" class="form-control" id="exampleInputEmail1"
                                    aria-describedby="emailHelp" placeholder="Service version">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">GKE Service name</label>
+                            <input name="gkeServiceName" type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="GKE Service name">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                                 else.</small>
                         </div>

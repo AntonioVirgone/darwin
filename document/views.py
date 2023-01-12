@@ -1,8 +1,7 @@
-import json
-
 from django.shortcuts import render, redirect
 
 from document.forms import PostForm
+from project.models import Project
 from service.Constant import COMMAND_LIST
 from service.DirectoryService import DirectoryService
 from service.DocumentService import DocumentService
@@ -11,35 +10,22 @@ from .models import Document
 
 def create(request):
     if request.method == "POST":
-        projectName = request.POST.get("projectName")
-        directoryName = request.POST.get("directoryName")
-        fileName = request.POST.get("fileName")
-        serviceName = request.POST.get("serviceName")
-        serviceVersion = request.POST.get("serviceVersion")
-        gkeServiceName = request.POST.get("gkeServiceName")
-        commandList = [request.POST.get("command1"), request.POST.get("command2"), request.POST.get("command3")]
-
-        document = Document(projectName=projectName,
-                            directoryName=directoryName,
-                            fileName=fileName,
-                            serviceName=serviceName,
-                            serviceVersion=serviceVersion,
-                            gkeServiceName=gkeServiceName,
-                            commandList=json.dumps(commandList))
-
-        DocumentService.create(document)
+        DocumentService.create(request.POST)
 
         return redirect('findAll')
     else:
+        projectList = Project.objects.all()
         directoryList = DirectoryService.getDirectoryList()
         return render(request,
                       'manager/document/document_create.html',
                       {
                           'directoryList': directoryList,
+                          'projectList': projectList,
                           'commandList': COMMAND_LIST
                       })
 
 
+# TODO: deprecated
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
