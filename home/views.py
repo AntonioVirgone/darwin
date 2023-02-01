@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 # Create your views here.
@@ -11,3 +12,7 @@ def home(request):
         response = HttpResponse(doc.read(), content_type='application/ms-word')
         response['Content-Disposition'] = 'attachment;filename=' + file_name
         return response
+
+
+def index(request):
+    return render(request, 'home/home.html')

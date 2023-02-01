@@ -32,3 +32,13 @@ def findBy(request, pk):
 def findAll(request):
     projectList = Project.objects.all()
     return render(request, 'manager/project/project_list.html', {'projectList': projectList})
+
+
+def delete(request, pk):
+    if Project.objects.filter(pk=pk):
+        doc = Project.objects.get(pk=pk)
+        Project.delete(doc)
+    else:
+        print("Project not found")
+
+    return findAll(request)
