@@ -6,7 +6,7 @@
         <th scope="col">
             <p class="date-back" style="font-size: 13px">{{ directory.name }}</p>
             <div style="padding: 0 20px;">
-                {% include 'manager/directory/directory_row.html' with files=directory.files %}
+                {% include 'manager/directory/directory_row.html' with directory=directory %}
             </div>
         </th>
     </tr>
