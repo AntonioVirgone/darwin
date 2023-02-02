@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from document.forms import PostForm
@@ -47,3 +48,14 @@ def post_detail(request, pk):
         doc = Document.objects.get(pk=pk)
 
     return render(request, 'manager/document/document_detail.html')
+
+
+def download_document(request):
+    dir_name = request.GET.get('dir_name')
+    file_name = request.GET.get('file_name')
+
+    file_path = './deploy_document/' + dir_name + "/" + file_name
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        response['Content-Disposition'] = 'attachment;filename=' + file_name
+        return response

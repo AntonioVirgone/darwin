@@ -1,18 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect
 
 
 # Create your views here.
-def home(request):
-    dir_name = request.GET.get('dir_name')
-    file_name = request.GET.get('file_name')
-
-    file_path = './deploy_document/' + dir_name + "/" + file_name
-    with open(file_path, 'rb') as doc:
-        response = HttpResponse(doc.read(), content_type='application/ms-word')
-        response['Content-Disposition'] = 'attachment;filename=' + file_name
-        return response
-
-
 def index(request):
-    return render(request, 'home/home.html')
+    return redirect('findAll')

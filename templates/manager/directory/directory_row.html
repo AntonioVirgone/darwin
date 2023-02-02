@@ -1,5 +1,5 @@
 {% block content %}
     {% for file in directory.files %}
-        <p><a class="p-2 text-dark" href="{% url 'home' %}?dir_name={{ directory.name }}&file_name={{ file }}">{{ file }}</a></p>
+        <p><a class="p-2 text-dark" href="{% url 'download_document' %}?dir_name={{ directory.name }}&file_name={{ file }}">{{ file }}</a></p>
     {% endfor %}
 {% endblock %}
