@@ -17,7 +17,7 @@ def create(request):
                           gkeServiceName=gkeServiceName)
         project.save()
 
-        return redirect('findAll')
+        return findAll(request)
     else:
         return render(request, 'manager/project/project_create.html')
 
